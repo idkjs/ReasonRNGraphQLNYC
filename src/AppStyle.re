@@ -14,6 +14,26 @@ module AppStyle = {
     Style.(
       StyleSheet.create({
         "container": style(~flex=1., ~paddingTop=statusBarHeight, ()),
+        "status": style(~backgroundColor=Colors.graphql, ()),
+        "barStyle": style(~backgroundColor=Colors.graphql, ()),
+      })
+    );
+};
+module NavStyle = {
+  let styles =
+    Style.(
+      StyleSheet.create({
+        "tabBar":
+          style(
+            ~backgroundColor=Colors.white,
+            ~borderTopColor=Colors.border,
+            ~paddingBottom=2.->dp,
+            ~paddingTop=2.->dp,
+            ~marginBottom=0.->dp,
+            (),
+          ),
+        "label": style(~fontFamily="dinMedium", ()),
+        "indicator": style(~backgroundColor=Colors.graphql, ()),
       })
     );
 };

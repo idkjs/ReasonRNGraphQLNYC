@@ -9,3 +9,15 @@ let loadFonts =
       ("dinLight", Packager.require("../assets/fonts/DINPro-Light.ttf")),
     ]),
   );
+
+  let rec getActiveRoute = route =>
+  switch (route##routes) {
+  | Some(routes) =>
+    let routeCount = routes->Array.length;
+    if (routeCount == 0 || route##index >= routeCount) {
+      route;
+    } else {
+      getActiveRoute(routes->Belt.Array.getUnsafe(route##index));
+    };
+  | None => route
+  };

@@ -6,17 +6,22 @@
     "ios": "expo start --ios",
     "eject": "expo eject",
     "build": "bsb -make-world -clean-world",
-    "watch": "bsb -make-world -clean-world -w"
+    "watch": "bsb -make-world -clean-world -w",
+    "introspection": "./node_modules/graphql_ppx/sendIntrospectionQuery.js http://localhost:8080/graphql"
   },
   "dependencies": {
+    "@apollo/react-hooks": "3.1.1",
     "bs-platform": "^5.0.4",
     "expo": "^34.0.3",
     "expo-linear-gradient": "^5.0.1",
     "react": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
     "react-native-calendars": "1.212.0",
+    "react-native-gesture-handler": "1.4.1",
+    "react-navigation": "3.12.0",
     "reason-apollo": "0.17.0",
     "reason-apollo-hooks": "2.6.0",
+    "reason-date-fns": "0.9.1",
     "reason-expo": "^34.0.0",
     "reason-react": "^0.7.0",
     "reason-react-native": "^0.60.0",
@@ -24,7 +29,8 @@
     "reason-react-navigation": "3.11.0-alpha.0"
   },
   "devDependencies": {
-    "babel-preset-expo": "^6.0.0"
+    "babel-preset-expo": "^6.0.0",
+    "graphql_ppx": "0.2.8"
   },
   "private": true
 }

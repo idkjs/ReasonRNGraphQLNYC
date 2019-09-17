@@ -7,7 +7,7 @@ type calendarEventPayload = {
 };
 
 type cgendaEvent = {
-  type_: string,
+  kind: string,
   title: string,
   description: string,
   link: string,

@@ -11,7 +11,8 @@
     "reason-react-native-maps",
     "reason-apollo",
     "reason-apollo-hooks",
-    "reason-react-navigation"
+    "reason-react-navigation",
+    "reason-date-fns"
   ],
   "sources": [
     {
@@ -19,6 +20,7 @@
       "subdirs":true
     }
   ],
+  "ppx-flags": ["graphql_ppx/ppx"],
   "suffix": ".bs.js",
   "refmt": 3,
   "package-specs": {

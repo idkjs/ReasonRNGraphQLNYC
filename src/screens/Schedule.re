@@ -1,5 +1,5 @@
 open ReactNative;
-open ReactNavigation;
+open RNCalendars;
 let styles =
   Style.(
     StyleSheet.create({
@@ -7,65 +7,92 @@ let styles =
       "icon": style(~width=26.->dp, ~height=26.->dp, ()),
     })
   );
-
+let agendaTheme = {
+  "textSectionTitleColor": AppStyle.Colors.graphql,
+  "selectedDayBackgroundColor": AppStyle.Colors.graphql,
+  "selectedDayTextColor": AppStyle.Colors.white,
+  "todayTextColor": AppStyle.Colors.graphql,
+  "dayTextColor": AppStyle.Colors.text,
+  "textDisabledColor": AppStyle.Colors.textDisabled,
+  "dotColor": AppStyle.Colors.graphql,
+  "selectedDotColor": AppStyle.Colors.white,
+  "arrowColor": AppStyle.Colors.graphql,
+  "monthTextColor": AppStyle.Colors.graphql,
+  "agendaDayTextColor": AppStyle.Colors.graphql,
+  "agendaDayNumColor": AppStyle.Colors.graphql,
+  "agendaTodayColor": AppStyle.Colors.graphql,
+  "textDayFontFamily": "dinRegular",
+  "textMonthFontFamily": "dinHeavy",
+  "textDayHeaderFontFamily": "dinMedium",
+};
 module EventsQueryConfig = [%graphql
   {|
       query Events {
-    events {
-      # time
-      # name
-      description
-      # status
-      link
-      # venue {
-      #   name
-      #   lat
-      #   lon
-      # }
-    }
+        events {
+          time
+          name
+          description
+          status
+          link
+          venue {
+            name
+            lat
+            lon
+          }
+        }
   }
   |}
 ];
 
-module EventsQuery =
-  ReasonApolloHooks.Query.Make(EventsQueryConfig);
+module EventsQuery = ReasonApolloHooks.Query.Make(EventsQueryConfig);
 
-[@react.component]
-let make = () => {
-  let query = EventsQueryConfig.make(());
+type state = {
+  selectedDate: string,
+  items: array(Js.t({.})),
+};
+type action =
+  | SelectDate(Js.Date.t)
+  | SetItems(array(Js.t({.})));
+let initialState = {selectedDate: "", items: [||]};
 
-  let (response, _) = EventsQuery.use(~variables=query##variables, ());
-
-  switch (response) {
-  | NoData => React.string("You haven't searched yet")
-  | Loading => React.string("Loading...")
-  | Error(_) => React.string("Not found")
-  | Data(data) =>
-    data##events
-    ->Belt.Option.mapWithDefault(React.null, event =>
-             <View style=styles##container>
-        {!loading &&
-          events &&
-          <Agenda
-            items={items}
-            renderItem={(item, firstItemInDay) =>
-              <AgendaCard
-                item={item}
-                // firstItemInDay={firstItemInDay}
-                onPress={_ => Linking.openURL(item.link)}
-              />}
-            renderDay={(day, item) => <AgendaDate day={day} item={item} />}
-            // renderEmptyDate={() => <AgendaNoData />}
-            // loadItemsForMonth={this.loadItemsForMonth}
-            // rowHasChanged={(r1, r2) => r1 !== r2}
-            // selected={selectedDate}
-            // onDayPress={this.onDayPress}
-            // theme={agendaTheme}
-          />}
-      </View>
-      )
+let reducer = (state, action) => {
+  switch (action) {
+  | SelectDate(date) => {
+      ...state,
+      selectedDate: Js.Date.toLocaleTimeString(date),
+    }
+  | SetItems(items) => {...state, items}
   };
 };
+[@react.component]
+let make = () => {
+  let query = EventsQueryConfig.make();
+
+  let (response, _) = EventsQuery.use(~variables=query##variables, ());
+    let (state, dispatch) = React.useReducer(reducer, initialState);
+  let {items, selectedDate} = state;
+
+  switch (response) {
+  | NoData => <Text> {React.string("You haven't searched yet")} </Text>
+  | Loading => <Text> {React.string("Loading...")} </Text>
+  | Error(_) => <Text> {React.string("Not found")} </Text>
+  | Data(data) =>
+    data##events->Js.log;
+    <View style=styles##container>
+<AgendaCard items renderItem={
+  (item, firstItemInDay) =>
+    <AgendaCard
+      item
+      firstItemInDay
+      onPress={() => Linking.openURL(item.link)}
+    />;
+}/>
+    <Screen name="Testing" /> </View>;
+  };
+};
+
+// open ReactNavigation;
+
 module TabIcon = {
   [@react.component]
   let make = () => {
@@ -75,22 +102,18 @@ module TabIcon = {
       )}
     />;
   };
-};
+} /* )*/ /*     ()*/ /*   )*/;
 
-
-type state ={
-  selectedDate:string,
-  items:
-}
-[@react.component]
-let make = () => {
-  <Screen name="Schedule Screen" />;
-};
-make->NavigationOptions.setNavigationOptions(
-  NavigationOptions.t(
-    ~tabBarLabel=NavigationOptions.TabBarLabel.string("Schedule"),
-    ~tabBarIcon=Utils.tabBarIcon(~name=`map),
-    // ~title="Profile",
-    (),
-  ),
-);
+// type state ={
+//   selectedDate:string,
+//   items:
+// }
+// [@react.component]
+// let make = () => {
+//   <Screen name="Schedule Screen" />;
+// };
+// make->NavigationOptions.setNavigationOptions(
+//   NavigationOptions.t(
+//     ~tabBarLabel=NavigationOptions.TabBarLabel.string("Schedule"),
+//     ~tabBarIcon=Utils.tabBarIcon(~name=`map),
+//     // ~title="Profile",

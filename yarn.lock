@@ -874,6 +874,11 @@
     pouchdb-collections "^1.0.1"
     tiny-queue "^0.2.1"
 
+"@glennsl/bs-json@5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@glennsl/bs-json/-/bs-json-5.0.1.tgz#b19d0b45f4a80d52e6bfefa032ac99f4548f3083"
+  integrity sha512-tDxqeO4LCUz3HIwsdqyM4OIUk/bIV8QwDuhNbqy3hHIVEciePbJXTSyXMKsoIFs3ukQY8ZsQXskONtOK4TyLfA==
+
 "@react-native-community/cli@^1.2.1":
   version "1.11.2"
   resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-1.11.2.tgz#b14967f24a389f5a16889a747345cf0e5757a2f1"
@@ -4838,7 +4843,7 @@ reason-react-native-maps@0.24.1:
   dependencies:
     react-native-maps "~0.24.0"
 
-reason-react-native@^0.60.0:
+reason-react-native@0.60.0:
   version "0.60.0"
   resolved "https://registry.yarnpkg.com/reason-react-native/-/reason-react-native-0.60.0.tgz#7adb9837f28d79d9f1e009b5d01ae864aff15d51"
   integrity sha512-7vq7KIaY1kGb5xnWVewuy8ttBx7/HAgeKfiwDYV3rij6Z89vU6QIheR6rENV8UxaKwRN/Gw168ladWLM042k9A==

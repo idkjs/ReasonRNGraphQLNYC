@@ -1,4 +1,4 @@
-let graphqlUrl = "http://localhost:8080/graphiql";
+let graphqlUrl = "http://localhost:4000/";
 
 let makeClient = () => {
   let httpLink = ApolloLinks.createHttpLink(~uri=graphqlUrl, ());

@@ -3,7 +3,9 @@
   "reason": {
     "react-jsx": 3
   },
-  "bsc-flags": ["-bs-super-errors"],
+  "bsc-flags": [
+    "-bs-super-errors"
+  ],
   "bs-dependencies": [
     "reason-react",
     "reason-react-native",
@@ -12,15 +14,18 @@
     "reason-apollo",
     "reason-apollo-hooks",
     "reason-react-navigation",
-    "@expo/vector-icons"
-    ],
+    "@expo/vector-icons",
+    "@glennsl/bs-json"
+  ],
   "sources": [
     {
       "dir": "src",
-      "subdirs":true
+      "subdirs": true
     }
   ],
-  "ppx-flags": ["graphql_ppx/ppx"],
+  "ppx-flags": [
+    "graphql_ppx/ppx"
+  ],
   "suffix": ".bs.js",
   "refmt": 3,
   "package-specs": {

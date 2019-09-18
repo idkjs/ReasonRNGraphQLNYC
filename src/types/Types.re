@@ -20,9 +20,9 @@ type agendaEvent = {
 type event = {
   time: string,
   name: string,
-  // description: string,
-  // status: string,
-  // link: string,
+  description: string,
+  status: string,
+  link: string,
   venue,
 } and venue = {
   name: string,

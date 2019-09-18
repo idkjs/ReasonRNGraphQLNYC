@@ -7,11 +7,13 @@
     "eject": "expo eject",
     "build": "bsb -make-world -clean-world",
     "watch": "bsb -make-world -clean-world -w",
-    "introspection": "./node_modules/graphql_ppx/sendIntrospectionQuery.js http://localhost:8080/graphql"
+    "clean": "bsb -clean-world",
+    "schema": "./node_modules/graphql_ppx/sendIntrospectionQuery.js http://localhost:4000/"
   },
   "dependencies": {
     "@apollo/react-hooks": "3.1.1",
     "@expo/vector-icons": "10.0.5",
+    "@glennsl/bs-json": "5.0.1",
     "bs-date-fns": "0.1.6",
     "bs-platform": "5.0.6",
     "date-fns": "1.29.0",
@@ -27,7 +29,7 @@
     "reason-date-fns": "0.9.1",
     "reason-expo": "^34.0.0",
     "reason-react": "^0.7.0",
-    "reason-react-native": "^0.60.0",
+    "reason-react-native": "0.60.0",
     "reason-react-native-maps": "0.24.1",
     "reason-react-navigation": "3.11.0-alpha.0"
   },

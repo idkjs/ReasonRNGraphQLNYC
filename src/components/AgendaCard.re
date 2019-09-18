@@ -38,14 +38,15 @@ let mapStyle =
 //   lat: float,
 //   lon: float,
 // };
-open Types;
+// open Types;
 let buildMapLink = (lat: float, lon: float) => {j|https://www.google.com/maps/search/?api=1&query=$lat,$lon|j};
 [@react.component]
 let make = (~item: event,
-//  ~firstItemInDay,
-  // ~onPress
+ ~firstItemInDay,
+  ~onPress
   ) => {
   let (url, setURL) = React.useState(() => None);
+  
   let handler = s => {
     s##url->Js.Console.warn;
   };

@@ -19,10 +19,30 @@ module Calendar = {
                       "color": string,
                       "textColor": string,
                     }),
-      ~style: option(ReactNative.Style.t)=?,
+      // ~style: option(ReactNative.Style.t)=?,
       ~markingType: option(string)=?,
       ~children: 'b
     ) =>
     React.element =
     "Calendar";
+};
+
+module Agenda = {
+  [@bs.module "react-native-calendars"] [@bs.scope "Agenda"] [@react.component]
+  external make:
+    (
+      ~items: Js.t({.}),
+      ~renderItem: option(unit => React.element),
+      ~renderDay: option(unit => React.element),
+      ~renderEmptyData: option(unit => React.element),
+      ~loadItemsForMonth: option(Js.t({..}) => unit)=?,
+      ~rowHasChanged: option(unit => unit),
+      ~selected: option(Js.t({..})),
+      ~onDayPress: option(Js.t({..}) => unit)=?,
+      // ~onDayPress: option(unit),
+      ~theme: Js.t({..}),
+      ~children: 'b
+    ) =>
+    React.element =
+    "Agenda";
 };

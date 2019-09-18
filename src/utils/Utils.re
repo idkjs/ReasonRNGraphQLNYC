@@ -1,4 +1,5 @@
 open ReactNative;
+open ReactNavigation;
 let loadFonts =
   Js.Promise.resolve(
     Expo.Font.loadAsync([
@@ -10,7 +11,15 @@ let loadFonts =
     ]),
   );
 
-  let rec getActiveRoute = route =>
+let tabBarIcon = (~name) =>
+  NavigationOptions.TabBarIcon.render(props =>
+    <FontAwesome
+      name
+      size=20
+      color={props##focused ? AppStyle.Colors.graphql : "#fafafa"}
+    />
+  );
+let rec getActiveRoute = route =>
   switch (route##routes) {
   | Some(routes) =>
     let routeCount = routes->Array.length;

@@ -12,8 +12,8 @@
     "reason-apollo",
     "reason-apollo-hooks",
     "reason-react-navigation",
-    "reason-date-fns"
-  ],
+    "@expo/vector-icons"
+    ],
   "sources": [
     {
       "dir": "src",

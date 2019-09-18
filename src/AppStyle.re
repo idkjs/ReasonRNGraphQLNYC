@@ -105,7 +105,30 @@ module AgendaDate = {
               )
               ->pct,
             ~color=Colors.graphql,
-             ~backgroundColor="transparent",
+            ~backgroundColor="transparent",
+            (),
+          ),
+      })
+    );
+};
+module AgendaNoData = {
+  let styles =
+    Style.(
+      StyleSheet.create({
+        "container":
+          style(
+            ~height=60.->dp,
+            ~justifyContent=`center,
+            ~alignItems=`stretch,
+            ~marginTop=32.->dp,
+            ~marginRight=16.->dp,
+            (),
+          ),
+        "line":
+          style(
+            ~marginTop=(-20.)->dp,
+            ~height=1.->dp,
+            ~backgroundColor=Colors.background,
             (),
           ),
       })

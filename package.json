@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@apollo/react-hooks": "3.1.1",
+    "bs-date-fns": "0.1.6",
     "bs-platform": "^5.0.4",
+    "date-fns": "1.29.0",
     "expo": "^34.0.3",
     "expo-linear-gradient": "^5.0.1",
     "react": "16.8.3",

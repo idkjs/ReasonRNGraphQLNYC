@@ -6,7 +6,7 @@ type calendarEventPayload = {
   dateString: string,
 };
 
-type cgendaEvent = {
+type agendaEvent = {
   kind: string,
   title: string,
   description: string,

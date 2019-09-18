@@ -70,3 +70,44 @@ module AgendaStyle = {
       })
     );
 };
+module AgendaDate = {
+  let styles =
+    Style.(
+      StyleSheet.create({
+        "container":
+          style(
+            ~width=63.->dp,
+            ~top=32.->dp,
+            ~alignItems=`center,
+            ~justifyContent=`flexStart,
+            (),
+          ),
+        "date":
+          style(
+            ~fontFamily="dinMedium",
+            ~fontSize=28.,
+            ~fontWeight=`_200,
+            ~marginBottom=8.->dp,
+            (),
+          ),
+        "day":
+          style(
+            ~fontFamily="dinRegular",
+            ~fontSize=16.,
+            ~fontWeight=`_200,
+            ~marginTop=
+              (
+                switch (Platform.os) {
+                | os when os == Platform.ios => (-10.)
+                | os when os == Platform.android => 0.
+                | _ => 300.
+                }
+              )
+              ->pct,
+            ~color=Colors.graphql,
+             ~backgroundColor="transparent",
+            (),
+          ),
+      })
+    );
+};

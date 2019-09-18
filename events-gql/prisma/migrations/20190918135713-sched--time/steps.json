@@ -1,0 +1,20 @@
+{
+  "version": "0.2.50",
+  "steps": [
+    {
+      "stepType": "CreateField",
+      "model": "Event",
+      "name": "time",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "DeleteField",
+      "model": "Event",
+      "name": "sched"
+    }
+  ]
+}
